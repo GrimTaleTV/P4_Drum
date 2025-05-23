@@ -8,6 +8,8 @@ public class BeatScroller : MonoBehaviour
 
     public float beatTempo;
 
+    public float bpm = 100;
+
     public bool hasStarted;
 
     //public InputActionReference StartKey;
@@ -15,7 +17,7 @@ public class BeatScroller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        beatTempo = beatTempo / 60f;
+        beatTempo = bpm / 60f;
     }
 
     // Update is called once per frame

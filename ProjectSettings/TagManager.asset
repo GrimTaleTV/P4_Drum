@@ -9,6 +9,8 @@ TagManager:
   - DrumHit
   - HighHit
   - Floor
+  - GoodHit
+  - PerfectHit
   layers:
   - Default
   - TransparentFX

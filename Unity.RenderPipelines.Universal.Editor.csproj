@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D99E4532-C754-11AE-56D1-2A70FBFF9B0E}</ProjectGuid>
+    <ProjectGuid>{84CDDC70-B357-51DD-62CA-BBF19C8DF985}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.RenderPipelines.Universal.Editor</AssemblyName>
@@ -1032,51 +1032,51 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.RenderPipelines.Universal.Runtime.csproj">
-      <Project>{777D1566-D4DB-80E3-1B2A-623D47C8066D}</Project>
+      <Project>{415D9380-4D63-B697-A6BB-4416D0C46190}</Project>
       <Name>Unity.RenderPipelines.Universal.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.csproj">
-      <Project>{06117CFB-4A58-5D1A-EED5-4FB7DE0EA75C}</Project>
+      <Project>{CAAFE873-B23E-9F13-524A-E72F21A82D92}</Project>
       <Name>Unity.RenderPipelines.Core.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Core.Editor.csproj">
-      <Project>{778C7BF6-C434-B781-B7E0-847B8740BA0E}</Project>
+      <Project>{5F3F2C80-2B99-C9DC-794D-3252E49D38AE}</Project>
       <Name>Unity.RenderPipelines.Core.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.ShaderGraph.Editor.csproj">
-      <Project>{420D4DBD-E301-5FFB-C3E0-FC3B46EB1B38}</Project>
+      <Project>{3CBAF7DC-9DD8-B096-DB4B-243B2D0C8565}</Project>
       <Name>Unity.ShaderGraph.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Burst.Editor.csproj">
-      <Project>{C06A9AE5-D237-7ADB-A72C-0ACDB860796C}</Project>
+      <Project>{EF9E9B1C-0A2C-5380-DABA-0B1E3EDA7B30}</Project>
       <Name>Unity.Burst.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.Editor.csproj">
-      <Project>{9871D648-E7D6-F903-EE7B-A66CFA77189C}</Project>
+      <Project>{E0351083-1877-C142-CE4D-2B93F2325FEF}</Project>
       <Name>Unity.Mathematics.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.XR.Management.Editor.csproj">
-      <Project>{E0ACCA9F-349F-F55A-3DC4-240E73CEF676}</Project>
+      <Project>{CF76EA10-8C85-47F2-C972-1AC82AEB1DAE}</Project>
       <Name>Unity.XR.Management.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.XR.Management.csproj">
-      <Project>{DBD814EE-9D58-3D77-2944-FF34264B5914}</Project>
+      <Project>{58B5C084-6B4E-0C1C-BD14-EE05035CCFA3}</Project>
       <Name>Unity.XR.Management</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{88A3E52D-0E69-CFD1-40BA-F08C317C5440}</Project>
+      <Project>{A3B35F4A-AF49-3EC6-2E2E-7C8F5E50A00C}</Project>
       <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{9ED53346-56B5-3BF4-311C-6DED63B4B5DB}</Project>
+      <Project>{5A1E6096-7CCD-AB78-761D-65536940D4B6}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{BA46C745-0184-F86C-9198-59EEF5473402}</Project>
+      <Project>{22DDA1DF-A170-52D6-58A1-21C9462A4945}</Project>
       <Name>UnityEditor.TestRunner</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{564B362B-A15D-C887-50CE-0206B072C3E0}</Project>
+      <Project>{55E43202-BC39-5747-E242-D03285347C39}</Project>
       <Name>UnityEngine.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>

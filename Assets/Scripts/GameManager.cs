@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
+using Unity.Mathematics;
+using System.Threading;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,6 +20,26 @@ public class GameManager : MonoBehaviour
     public InputActionReference StartKey;
 
     public InputActionReference KickDrumKey;
+
+    private float endGameTimer = 0f;
+
+    // This part is for keeping score
+
+    private int currentScore;
+    private int scorePerNote = 100;
+    private int scorePerPerfectNote = 200;
+    private float notesPlayed;
+    private float notesHit;
+    private float accuracy;
+    public int perfectNotesHit;
+
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI accText;
+
+    // This is to control game speed.
+
+    public bool gameSpeedMedium = false;
+    public bool gameSpeedHard = false;
 
     //for spawning gameObjects.
 
@@ -70,6 +94,23 @@ public class GameManager : MonoBehaviour
         {
             // Increment the timer by the time passed since the last frame
             timer += Time.deltaTime;
+            endGameTimer += Time.deltaTime;
+
+            if (gameSpeedMedium == true)
+            {
+                timer += Time.deltaTime;
+            }
+
+            if (gameSpeedHard == true)
+            {
+                timer += Time.deltaTime + Time.deltaTime;
+                theBS.bpm = 150;
+            }
+
+            if (endGameTimer >= 30)
+            {
+                startPlaying = false;
+            }
         }
 
         if (timer >= 1 && timer <= 2)
@@ -77,6 +118,7 @@ public class GameManager : MonoBehaviour
             if (hasRunOne == false)
             {
                 HighHatNoteGenerator();
+                KickDrumNoteGenerator();
                 hasRunOne = true;
             }
         }
@@ -86,6 +128,7 @@ public class GameManager : MonoBehaviour
             if (hasRunTwo == false)
             {
                 HighHatNoteGenerator();
+                DrumNoteGenerator();
                 hasRunTwo = true;
             }
         }
@@ -95,50 +138,50 @@ public class GameManager : MonoBehaviour
             if (hasRunThree == false)
             {
                 HighHatNoteGenerator();
-                DrumNoteGenerator();
                 hasRunThree = true;
             }
         }
 
-        if (timer >= 4 && timer <= 5)
+        if (timer >= 4)
         {
             if (hasRunFour == false)
             {
                 HighHatNoteGenerator();
-                hasRunFour = true;
+                DrumNoteGenerator();
+                timer = 0f;
+                hasRunOne = false;
+                hasRunTwo = false;
+                hasRunThree = false;
             }
-        }
-
-        if (timer >= 5 && timer <= 6)
-        {
-            if (hasRunFive == false)
-            {
-                HighHatNoteGenerator();
-                hasRunFive = true;
-            }        
-        }
-
-        if (timer >= 6)
-        {
-            HighHatNoteGenerator();
-            KickDrumNoteGenerator();
-            timer = 0f;
-            hasRunOne = false;
-            hasRunTwo = false;
-            hasRunThree = false;
-            hasRunFour = false;
-            hasRunFive = false;
         }
     }
 
     public void NoteHit()
     {
         Debug.Log("Hit On Time");
+
+        notesPlayed++;
+        notesHit++;
+
+        currentScore += scorePerNote;
+        string currString = currentScore.ToString();
+        scoreText.text = "score:" + currString;
+
+        accuracy = (notesHit / notesPlayed) * 100f;
+        string formAccuracy = accuracy.ToString("F2");
+        accText.text = "Acc%:" + formAccuracy;
     }
 
     public void NoteMissed()
     {
         Debug.Log("Missed Note");
+
+        notesPlayed++;
+
+        accuracy = (notesHit / notesPlayed) * 100f;
+
+        string formAccuracy = accuracy.ToString("F2");
+        accText.text = "Acc%:" + formAccuracy;
     }
 
     // this is all to spawn new nodes.
@@ -170,7 +213,7 @@ public class GameManager : MonoBehaviour
     public void KickDrumNoteGenerator()
     {
         // Create a rotation of 90 degrees on the z-axis
-        Quaternion rotation = Quaternion.Euler(0f, 0f, 90f);
+        Quaternion rotation = Quaternion.Euler(-45f, 0f, 90f);
 
         // Instantiate the prefab at the specified spawn position
         GameObject newObject = Instantiate(KickDrumNoteObject, kickDrumSpawnPosition, rotation);

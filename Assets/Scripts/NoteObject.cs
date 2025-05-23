@@ -27,7 +27,7 @@ public class NoteObject : MonoBehaviour
     {
         if (other.tag == "Activator")
         {
-            canBePressed = true;
+            canBePressed = true; 
         }
 
         if (other.tag == "Floor")
