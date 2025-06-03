@@ -15,7 +15,16 @@ public class DrumScript : NoteObject
 
     public NoteObject NoteObject;
 
-    public AudioSource DrumAudio;
+    //public AudioSource DrumAudio;
+
+    public AudioSource topLeftTrack;   // Top Left Audio Source
+    public AudioSource topRightTrack; // Top Right Audio Source
+    public AudioSource bottomLeftTrack; // Bottom Left Audio Source
+    public AudioSource bottomRightTrack; // Bottom Right Audio Source
+
+    // save values for drum mixing
+    public float xValue;
+    public float yValue;
 
     private void PlayAllDrumNotes()
     {
@@ -50,7 +59,8 @@ public class DrumScript : NoteObject
         if (hitSec >= 1 & hitSec <= 5)
         {
             PlayAllDrumNotes();
-            DrumAudio.Play();
+            DrumMix();
+            //DrumAudio.Play();
         }
         else
         {
@@ -86,6 +96,8 @@ public class DrumScript : NoteObject
 
                     // Log the x and y values in local space
                     // Debug.Log($"Initial Strike at X: {localIntersectionPoint.x}, Y: {localIntersectionPoint.y}");
+                    xValue = localIntersectionPoint.x;
+                    yValue = localIntersectionPoint.y;
                     break; // Exit the loop after the first valid contact point
                 }
             }
@@ -96,5 +108,30 @@ public class DrumScript : NoteObject
     {
         // Reset the flag when the collision ends
         isBeingStruck = false;
+    }
+
+    public void DrumMix()
+    {
+        // Normalize xValue and yValue to range [0, 1]
+        float normalizedX = Mathf.InverseLerp(-0.5f, 0.5f, xValue);
+        float normalizedY = Mathf.InverseLerp(-0.5f, 0.5f, yValue);
+
+        // Calculate weights for each corner
+        float weightTL = (1 - normalizedX) * normalizedY; // Top Left
+        float weightTR = normalizedX * normalizedY;       // Top Right
+        float weightBL = (1 - normalizedX) * (1 - normalizedY); // Bottom Left
+        float weightBR = normalizedX * (1 - normalizedY);       // Bottom Right
+
+        // Set volumes for each audio track
+        topLeftTrack.volume = weightTL;
+        topRightTrack.volume = weightTR;
+        bottomLeftTrack.volume = weightBL;
+        bottomRightTrack.volume = weightBR;
+
+        // Ensure all tracks are playing
+        if (!topLeftTrack.isPlaying) topLeftTrack.Play();
+        if (!topRightTrack.isPlaying) topRightTrack.Play();
+        if (!bottomLeftTrack.isPlaying) bottomLeftTrack.Play();
+        if (!bottomRightTrack.isPlaying) bottomRightTrack.Play();
     }
 }

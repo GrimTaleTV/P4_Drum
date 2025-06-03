@@ -82,6 +82,10 @@ public class GameManager : MonoBehaviour
             {
                 startPlaying = true;
                 theBS.hasStarted = true;
+
+                notesPlayed = 0f;
+                notesHit = 0f;
+                currentScore = 0;
             }
         }
 
@@ -110,6 +114,7 @@ public class GameManager : MonoBehaviour
             if (endGameTimer >= 30)
             {
                 startPlaying = false;
+                endGameTimer = 0;
             }
         }
 
