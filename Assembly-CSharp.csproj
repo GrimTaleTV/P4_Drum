@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\NoteObjectHat.cs" />
     <Compile Include="Assets\Scripts\NoteObject.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\CountDown.cs" />
     <Compile Include="Assets\Scripts\HighHatScript.cs" />
   </ItemGroup>
   <ItemGroup>

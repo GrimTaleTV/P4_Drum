@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     public InputActionReference KickDrumKey;
 
-    private float endGameTimer = 0f;
+    public float endGameTimer = 0f;
 
     // This part is for keeping score
 
@@ -67,10 +67,14 @@ public class GameManager : MonoBehaviour
     public bool hasRunFour = false;
     public bool hasRunFive = false;
 
+    // used for testing phaze
+    public GameObject testBoard;
+    public bool testMode;
+
     // Start is called before the first frame update
     void Start()
     {
-        instance = this; 
+        instance = this;
     }
 
     // Update is called once per frame
@@ -133,7 +137,6 @@ public class GameManager : MonoBehaviour
             if (hasRunTwo == false)
             {
                 HighHatNoteGenerator();
-                DrumNoteGenerator();
                 hasRunTwo = true;
             }
         }
@@ -143,6 +146,7 @@ public class GameManager : MonoBehaviour
             if (hasRunThree == false)
             {
                 HighHatNoteGenerator();
+                DrumNoteGenerator();
                 hasRunThree = true;
             }
         }
@@ -152,11 +156,18 @@ public class GameManager : MonoBehaviour
             if (hasRunFour == false)
             {
                 HighHatNoteGenerator();
-                DrumNoteGenerator();
                 timer = 0f;
                 hasRunOne = false;
                 hasRunTwo = false;
                 hasRunThree = false;
+            }
+        }
+
+        if (testMode == true)
+        {
+            if (endGameTimer >= 10)
+            {
+                testBoard.SetActive(true);
             }
         }
     }

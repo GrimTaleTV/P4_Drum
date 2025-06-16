@@ -11,6 +11,7 @@ TagManager:
   - Floor
   - GoodHit
   - PerfectHit
+  - FirstNote
   layers:
   - Default
   - TransparentFX

@@ -15,8 +15,7 @@ public class HighHatScript : NoteObjectHat
 
     public NoteObject NoteObject;
 
-    //public AudioSource HighHatAudio;
-
+    // Audio sources for audio mix
     public AudioSource topLeftTrack;   // Top Left Audio Source
     public AudioSource topRightTrack; // Top Right Audio Source
     public AudioSource bottomLeftTrack; // Bottom Left Audio Source
@@ -60,7 +59,6 @@ public class HighHatScript : NoteObjectHat
         {
             PlayAllDrumNotes();
             DrumMix();
-            //HighHatAudio.Play();
         }
         else
         {

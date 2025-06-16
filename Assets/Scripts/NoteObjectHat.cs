@@ -11,6 +11,11 @@ public class NoteObjectHat : MonoBehaviour
 
     public bool playNote = false;
 
+    public bool noteDetected;
+
+    public AudioSource metronomeAudio;
+
+
     void Update()
     {
         if (canBePressed == true)
@@ -29,6 +34,12 @@ public class NoteObjectHat : MonoBehaviour
         if (other.tag == "Activator")
         {
             canBePressed = true;
+
+            if (noteDetected == false)
+            {
+                metronomeAudio.Play();
+                noteDetected = true;
+            }
         }
 
         if (other.tag == "Floor")

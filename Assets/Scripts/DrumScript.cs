@@ -15,8 +15,7 @@ public class DrumScript : NoteObject
 
     public NoteObject NoteObject;
 
-    //public AudioSource DrumAudio;
-
+    // Audio sources for audio mix
     public AudioSource topLeftTrack;   // Top Left Audio Source
     public AudioSource topRightTrack; // Top Right Audio Source
     public AudioSource bottomLeftTrack; // Bottom Left Audio Source
